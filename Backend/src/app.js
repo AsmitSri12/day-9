@@ -3,10 +3,12 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const noteModel = require("./Models/note.model")
+const cors = require("cors")
 
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 /*
 * - POST /api/notes
