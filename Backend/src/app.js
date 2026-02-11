@@ -4,12 +4,14 @@ const express = require("express")
 const mongoose = require("mongoose")
 const noteModel = require("./Models/note.model")
 const cors = require("cors")
+const path = require("path")
+
 
 const app = express()
 
 app.use(express.json())
 app.use(cors())
-
+app.use(express.static("./public"))
 /*
 * - POST /api/notes
 * - create new note and save data in mongodb
@@ -63,6 +65,12 @@ app.patch("/api/notes/:id", async (req, res) => {
     res.status(200).json({
         message: "Note updated successfully" 
     })
+})
+
+//console.log(__dirname)  --dirname provides the full path of the current directory
+//".." -to get out of the __diname path in middle and access the public folder
+app.use('*name', (req, res) => {
+    res.sendFile(path.join(__dirname,"..","/public/index.html"))
 })
 
 module.exports = app;
