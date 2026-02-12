@@ -11,7 +11,7 @@ const app = express()
 
 app.use(express.json())
 app.use(cors())
-app.use(express.static("./public"))
+app.use(express.static("./public")) //this express.static makes the folder publicily available to access.
 /*
 * - POST /api/notes
 * - create new note and save data in mongodb
